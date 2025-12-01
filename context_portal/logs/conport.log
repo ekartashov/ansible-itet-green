@@ -1,0 +1,14 @@
+2025-12-01 18:01:39,763 - INFO - context_portal_mcp.main - File logging configured to: /home/user/itet-green/ansible-lostsecret-intel/context_portal/./logs/conport.log
+2025-12-01 18:01:39,763 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-01 18:01:39,763 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-01 18:01:39,763 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='/home/user/itet-green/ansible-lostsecret-intel', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-01 18:01:39,763 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-01 18:01:39,764 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by existing context_portal: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-01 18:01:39,764 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'existing_context_portal', 'indicators_found': ['README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-01 18:01:39,764 - INFO - context_portal_mcp.main - Effective workspace ID: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-01 18:01:39,764 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-01 18:01:39,764 - INFO - context_portal_mcp.db.database - Alembic.ini not found. Creating at /home/user/itet-green/ansible-lostsecret-intel/context_portal/alembic.ini
+2025-12-01 18:01:39,764 - INFO - context_portal_mcp.db.database - Alembic env.py not found. Creating at /home/user/itet-green/ansible-lostsecret-intel/context_portal/alembic/env.py
+2025-12-01 18:01:39,764 - INFO - context_portal_mcp.db.database - Initial schema not found. Creating at /home/user/itet-green/ansible-lostsecret-intel/context_portal/alembic/versions/2025_06_17_initial_schema.py
+2025-12-01 18:01:39,765 - INFO - context_portal_mcp.db.database - Alembic: Script directory /home/user/itet-green/ansible-lostsecret-intel/context_portal/alembic confirmed to exist by Python.
+2025-12-01 18:01:39,765 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: /home/user/itet-green/ansible-lostsecret-intel/context_portal/context.db

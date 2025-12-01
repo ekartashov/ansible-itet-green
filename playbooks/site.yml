@@ -1,0 +1,7 @@
+---
+- name: Configure lostsecret-intel
+  hosts: lostsecret_intel
+  become: true
+
+  roles:
+    - role: base

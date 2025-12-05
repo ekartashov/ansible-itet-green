@@ -1,0 +1,18 @@
+---
+- name: Test RAPL Monitoring on lostsecret-amd (SSH)
+  hosts: lostsecret-amd
+  become: yes
+  tasks:
+    - name: Run RAPL monitoring script
+      command: /home/user/itet-green/ansible-lostsecret-intel/roles/base/files/get_power_rapl.bash
+      register: rapl_output
+      failed_when: rapl_output.rc != 0
+
+    - name: Display RAPL output
+      debug:
+        msg: "RAPL Monitoring Output: {{ rapl_output.stdout_lines }}"
+      when: rapl_output is defined and rapl_output.stdout_lines is defined
+
+    - name: Log RAPL Monitoring Results to ConPort
+      command: echo "{{ rapl_output.stdout_lines }}" | uvx --from context-portal-mcp conport-mcp --mode stdio --workspace_id /home/user/itet-green/ansible-lostsecret-intel --log-file ./logs/conport.log --log-level INFO log_custom_data category="test_results" key="rapl_remote_output" value="{{ rapl_output.stdout_lines }}"
+      ignore_errors: yes

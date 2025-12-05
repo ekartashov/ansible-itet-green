@@ -3,8 +3,8 @@
   hosts: localhost
   become: yes
   tasks:
-    - name: Run RAPL monitoring script
-      command: /home/user/itet-green/ansible-lostsecret-intel/roles/base/files/get_power_rapl.bash
+    - name: Run RAPL monitoring script (dependency-free version)
+      command: /home/user/itet-green/ansible-lostsecret-intel/roles/base/files/get_power_rapl_no_deps.bash 10
       register: rapl_output
       failed_when: rapl_output.rc != 0
 

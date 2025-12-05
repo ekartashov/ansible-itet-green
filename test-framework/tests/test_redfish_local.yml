@@ -3,8 +3,8 @@
   hosts: localhost
   become: yes
   tasks:
-    - name: Run Redfish power monitoring script
-      command: /home/user/itet-green/ansible-lostsecret-intel/roles/base/files/redfish_power.bash
+    - name: Run Redfish power monitoring script (bash version with environment variables)
+      command: /home/user/itet-green/ansible-lostsecret-intel/roles/base/files/get_power_redfish.bash
       register: redfish_output
       failed_when: redfish_output.rc != 0
 

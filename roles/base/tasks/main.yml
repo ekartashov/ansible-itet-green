@@ -3,6 +3,7 @@
 
 - name: Check connectivity
   ansible.builtin.ping:
+  become: no
 
 # - name: Ensure apt cache is up to date
 #   ansible.builtin.apt:
@@ -35,6 +36,9 @@
 
 - name: get power through rapl
   ansible.builtin.command: > # arg1: interval
-    /usr/bin/python3 {{ role_path }}/files/get_power_rapl.bash
+    /bin/bash {{ role_path }}/files/get_power_rapl_no_deps.bash
     10
   delegate_to: localhost
+  become: no
+  register: rapl_power_output
+  failed_when: rapl_power_output.rc != 0

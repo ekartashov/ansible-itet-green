@@ -35,16 +35,9 @@ format_timestamp() {
 
 # Function to get hostname using /proc/self/cmdline
 get_hostname() {
-  # Read the command line arguments from /proc/self/cmdline
-  local cmdline
-  cmdline=$(<"/proc/self/cmdline")
-
-  # The hostname is typically the first argument after the script name
-  # Convert null-separated arguments to an array
-  IFS=$'\0' read -r -a args <<< "$cmdline"
-
-  # The hostname is typically the first argument
-  echo "${args[0]}"
+  # Get the actual hostname from the system
+  hostname=$(hostname)
+  echo "$hostname"
 }
 
 # Function to check if nvidia-smi is available

@@ -39,6 +39,7 @@
     /bin/bash {{ role_path }}/files/get_power_rapl_no_deps.bash
     10
   delegate_to: localhost
-  become: no
+  become: yes
+  become_flags: '-S'
   register: rapl_power_output
   failed_when: rapl_power_output.rc != 0

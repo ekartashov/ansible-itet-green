@@ -1,0 +1,63 @@
+{
+  // OpenCode project configuration
+
+  "$schema": "https://opencode.ai/config.json",
+
+  // Project-wide behavioral rules for all agents.
+  // This is where your generic ConPort strategy should live.
+  "instructions": [
+    ".opencode/instructions/conport-memory-strategy.md"
+    // You can add more shared policies later, e.g.:
+    // ".opencode/prompts/global_policies.md",
+    // ".opencode/prompts/severity_policy.md"
+  ],
+
+  // MCP (Model Communication Protocol) servers for the project
+  "mcp": {
+    "conport": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "uvx",
+        "--from",
+        "context-portal-mcp",
+        "conport-mcp",
+        "--mode",
+        "stdio",
+        "--log-file",
+        "./logs/conport.log",
+        "--log-level",
+        "INFO"
+      ]
+    },
+
+    "ck": {
+      "type": "local",
+      "enabled": true,
+      "command": ["ck", "--serve"]
+    }
+  },
+
+  // LSP servers
+  "lsp": {
+    "bash": {
+      "command": ["npx", "--yes", "bash-language-server", "start"],
+      "extensions": [".sh", ".bash"]
+    },
+
+    "pyright": {
+      "command": ["npx", "--yes", "pyright", "--stdio"],
+      "extensions": [".py", ".pyi"]
+    },
+
+    "yaml-ls": {
+      "command": ["npx", "--yes", "yaml-language-server", "--stdio"],
+      "extensions": [".yaml", ".yml"]
+    },
+
+    "json": {
+      "command": ["npx", "--yes", "vscode-json-languageserver", "--stdio"],
+      "extensions": [".json", ".jsonc"]
+    }
+  }
+}

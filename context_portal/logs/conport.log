@@ -397,3 +397,124 @@
 2025-12-06 17:12:54,582 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: /home/user/itet-green/ansible-lostsecret-intel
 2025-12-06 17:12:54,583 - INFO - context_portal_mcp.db.database - Alembic: Script directory /home/user/itet-green/ansible-lostsecret-intel/context_portal/alembic confirmed to exist by Python.
 2025-12-06 17:12:54,583 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: /home/user/itet-green/ansible-lostsecret-intel/context_portal/context.db
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.main - File logging configured to: /home/user/itet-green/ansible-lostsecret-intel/context_portal/./logs/conport.log
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='/home/user/itet-green/ansible-lostsecret-intel', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.main - Effective workspace ID: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 19:47:23,803 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 19:47:23,804 - INFO - context_portal_mcp.db.database - Alembic: Script directory /home/user/itet-green/ansible-lostsecret-intel/context_portal/alembic confirmed to exist by Python.
+2025-12-06 19:47:23,804 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: /home/user/itet-green/ansible-lostsecret-intel/context_portal/context.db
+2025-12-06 19:58:09,209 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 19:58:09,209 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 19:58:09,209 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 19:58:09,209 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 19:58:09,209 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 19:58:09,209 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 19:58:09,209 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 19:58:09,210 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 19:58:09,210 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 19:58:09,210 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 19:58:09,210 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 20:16:48,705 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 20:16:48,706 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 20:16:48,706 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 20:19:16,940 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 20:19:16,941 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 20:19:16,942 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 20:19:16,942 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 20:23:35,550 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 20:23:35,550 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 20:23:35,550 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 20:23:35,550 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 20:23:35,550 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 20:23:35,551 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 20:23:35,551 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 20:23:35,551 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 20:23:35,551 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 20:23:35,551 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 20:23:35,551 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 20:29:33,890 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 20:29:33,891 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 20:29:33,892 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 20:29:33,892 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 20:48:35,082 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 20:48:35,082 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 20:48:35,082 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 20:48:35,082 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 20:48:35,082 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 20:48:35,082 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 20:48:35,082 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 20:48:35,083 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 20:48:35,083 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 20:48:35,083 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 20:48:35,083 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 20:59:16,016 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 20:59:16,016 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 20:59:16,016 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 20:59:16,016 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 20:59:16,016 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 20:59:16,016 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 20:59:16,017 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 20:59:16,017 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 20:59:16,017 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 20:59:16,017 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 20:59:16,017 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 20:59:31,011 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 20:59:31,012 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 20:59:31,012 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 21:01:27,031 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 21:01:27,032 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 21:01:27,032 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db
+2025-12-06 21:13:02,744 - INFO - context_portal_mcp.main - File logging configured to: ./context_portal/./logs/conport.log
+2025-12-06 21:13:02,744 - INFO - context_portal_mcp.core.config - Database filename set to: context.db
+2025-12-06 21:13:02,744 - INFO - context_portal_mcp.main - Using database filename: context.db
+2025-12-06 21:13:02,744 - INFO - context_portal_mcp.main - Parsed CLI args: Namespace(host='127.0.0.1', port=8000, workspace_id='./', auto_detect_workspace=True, workspace_search_start=None, no_auto_detect=False, mode='stdio', log_file='./logs/conport.log', db_path=None, base_path=None, db_filename='context.db', log_level='INFO')
+2025-12-06 21:13:02,744 - INFO - context_portal_mcp.main - Starting ConPort in STDIO mode with workspace detection enabled
+2025-12-06 21:13:02,744 - INFO - context_portal_mcp.core.workspace_detector - Workspace detected by strong indicators: /home/user/itet-green/ansible-lostsecret-intel
+2025-12-06 21:13:02,744 - INFO - context_portal_mcp.main - Workspace detection details: {'start_path': '/home/user/itet-green/ansible-lostsecret-intel', 'detected_workspace': '/home/user/itet-green/ansible-lostsecret-intel', 'context_portal_path': '/home/user/itet-green/ansible-lostsecret-intel/context_portal', 'detection_method': 'strong_indicators', 'indicators_found': ['.git', '.gitignore', 'README.md'], 'environment_variables': {'VSCODE_WORKSPACE_FOLDER': None, 'CONPORT_WORKSPACE': None, 'PWD': '/home/user/itet-green/ansible-lostsecret-intel', 'CWD': '/home/user/itet-green/ansible-lostsecret-intel'}}
+2025-12-06 21:13:02,745 - INFO - context_portal_mcp.main - Effective workspace ID: ./
+2025-12-06 21:13:02,745 - INFO - context_portal_mcp.main - Pre-warming database connection for workspace: ./
+2025-12-06 21:13:02,745 - INFO - context_portal_mcp.db.database - Alembic: Script directory context_portal/alembic confirmed to exist by Python.
+2025-12-06 21:13:02,745 - INFO - context_portal_mcp.db.database - Running Alembic migrations for database: context_portal/context.db

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# NVIDIA GPU Power Monitoring Script
+# This script reads instantaneous GPU power from NVIDIA GPUs
+# It outputs exactly one numeric value in watts on success
+
+# Check if nvidia-smi is available
+if ! command -v nvidia-smi >/dev/null 2>&1; then
+    exit 1
+fi
+
+# Get GPU power draw using nvidia-smi
+POWER_OUTPUT=$(nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits 2>/dev/null)
+
+# Check if we got a valid output
+if [ -z "$POWER_OUTPUT" ] || [ "$POWER_OUTPUT" = "0" ]; then
+    exit 1
+fi
+
+# Output the power value (it should already be in watts)
+echo "$POWER_OUTPUT"
+exit 0

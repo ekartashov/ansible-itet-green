@@ -1,43 +1,79 @@
 {
   "version": "0.1.0",
   "created": 1765044921,
-  "updated": 1765126013,
+  "updated": 1765126196,
   "files": {
-    "./test-framework/tests/test_component_local.yml": {
-      "path": "./test-framework/tests/test_component_local.yml",
-      "hash": "b280bf8de79741c51a1fb455b9cd7a0cd67832bdd26a598c726ce43b56b1620b",
-      "last_modified": 1764622233,
-      "size": 997
+    "./playbooks/site.yml": {
+      "path": "./playbooks/site.yml",
+      "hash": "98ffff364fea200c6f5a7f05cdebf34d8b7e15f06685aa8a4caa09e9fb65f04c",
+      "last_modified": 1765125864,
+      "size": 154
     },
-    "./roles/power_monitoring/templates/discover_gpu_sensors.sh.j2": {
-      "path": "./roles/power_monitoring/templates/discover_gpu_sensors.sh.j2",
-      "hash": "96af1a60074fdf68650e8a3f8b794287a8dc2397ef59b4bd1733f5b4a762b6aa",
-      "last_modified": 1765125898,
-      "size": 807
+    "./context_portal/conport_vector_data/db8a1e74-1a34-4dd5-8d1d-bb9276bd8567/link_lists.bin": {
+      "path": "./context_portal/conport_vector_data/db8a1e74-1a34-4dd5-8d1d-bb9276bd8567/link_lists.bin",
+      "hash": "af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262",
+      "last_modified": 1765125783,
+      "size": 0
     },
-    "./opencode.jsonc": {
-      "path": "./opencode.jsonc",
-      "hash": "95f640c7b57b3b7a43e57264c1c95bd10e0fa650591fd2c79d4d5395e839b90c",
-      "last_modified": 1765125566,
-      "size": 1984
+    "./plan_for_dependency_elimination.md": {
+      "path": "./plan_for_dependency_elimination.md",
+      "hash": "528196802f479e4646a7a47d930de91c29fb32f566ef1da591fc7f630192ec92",
+      "last_modified": 1764949951,
+      "size": 3932
     },
-    "./roles/power_monitoring/tasks/deploy_scripts.yml": {
-      "path": "./roles/power_monitoring/tasks/deploy_scripts.yml",
-      "hash": "d01d279acb489046af388784ff65a263f7e77f81822c18677dff6b4c079f024a",
-      "last_modified": 1765125842,
-      "size": 1772
+    "./test-framework/tests/test_redfish_remote.yml": {
+      "path": "./test-framework/tests/test_redfish_remote.yml",
+      "hash": "850489537abb21a3fce8a9169c6df5579fd82d532b360ca74116bb4c440e53b1",
+      "last_modified": 1764622250,
+      "size": 961
     },
-    "./roles/base/files/get_power_amd_rapl_no_deps.bash": {
-      "path": "./roles/base/files/get_power_amd_rapl_no_deps.bash",
-      "hash": "e96e398d8bd0d9eab1206f47b727d178163780d17d2af8dc2909d76f6e68f9d5",
-      "last_modified": 1764951783,
-      "size": 2829
+    "./roles/base/files/get_hw_info.bash": {
+      "path": "./roles/base/files/get_hw_info.bash",
+      "hash": "4d25a4e9d29989321bdc046fe24caf42483b5cda432b455ba5eff4e645a58e4f",
+      "last_modified": 1764950268,
+      "size": 2359
     },
-    "./roles/power_monitoring/tasks/main.yml": {
-      "path": "./roles/power_monitoring/tasks/main.yml",
-      "hash": "80296ca9eb96fde9d0698d5a3e0c0a14f60c4233ea43dfa49e9480cb95fb939b",
-      "last_modified": 1765125795,
-      "size": 418
+    "./roles/base/tasks/main.yml": {
+      "path": "./roles/base/tasks/main.yml",
+      "hash": "95cdef452d5f0e34abaa9c8682ccecb830fdbdb6f00512f7149c2439b21e14ba",
+      "last_modified": 1764956640,
+      "size": 1202
+    },
+    "./ansible.cfg": {
+      "path": "./ansible.cfg",
+      "hash": "af5f1c7d017476596ca5866a4bcb32ec011461c80d2c79624328ef4c7432c474",
+      "last_modified": 1764956652,
+      "size": 235
+    },
+    "./test-framework/tests/test_component_remote.yml": {
+      "path": "./test-framework/tests/test_component_remote.yml",
+      "hash": "0c871ca30fdfd84416ec69ed2111e520c9d272b653af4a8d37a2f089816fbd12",
+      "last_modified": 1764622239,
+      "size": 995
+    },
+    "./roles/power_monitoring/templates/read_cpu_rapl_power.sh.j2": {
+      "path": "./roles/power_monitoring/templates/read_cpu_rapl_power.sh.j2",
+      "hash": "d879de726d30d70f9c755aa87aa55606c164865226ef76df049836ee1ef016a3",
+      "last_modified": 1765125879,
+      "size": 1559
+    },
+    "./roles/base/files/redfish_power_no_deps.bash": {
+      "path": "./roles/base/files/redfish_power_no_deps.bash",
+      "hash": "ba7184c3f4cd020acede7ca8d85b55fe48a70c4c40cb20dbe108fdbd6157a879",
+      "last_modified": 1764952920,
+      "size": 5846
+    },
+    "./roles/power_monitoring/templates/read_gpu_nvidia_power.sh.j2": {
+      "path": "./roles/power_monitoring/templates/read_gpu_nvidia_power.sh.j2",
+      "hash": "40ca995bb7fb1842a401b28b98fdeafeabde5536f463728d4eb6dfad901f758c",
+      "last_modified": 1765126108,
+      "size": 602
+    },
+    "./test-power-monitoring.yml": {
+      "path": "./test-power-monitoring.yml",
+      "hash": "85179989289923c4845f218dec7aa10c8e12f3609eadd42ffc320a5d7b9dea89",
+      "last_modified": 1765126167,
+      "size": 310
     },
     "./roles/power_monitoring/templates/read_ram_rapl_power.sh.j2": {
       "path": "./roles/power_monitoring/templates/read_ram_rapl_power.sh.j2",
@@ -45,11 +81,41 @@
       "last_modified": 1765125888,
       "size": 930
     },
-    "./playbooks/site.yml": {
-      "path": "./playbooks/site.yml",
-      "hash": "98ffff364fea200c6f5a7f05cdebf34d8b7e15f06685aa8a4caa09e9fb65f04c",
-      "last_modified": 1765125864,
-      "size": 154
+    "./roles/power_monitoring/templates/power.conf.j2": {
+      "path": "./roles/power_monitoring/templates/power.conf.j2",
+      "hash": "97b57da06685cee6f8f18d7b5546e5e342a69115155a3be147a5cf0bf1b30248",
+      "last_modified": 1765125867,
+      "size": 686
+    },
+    "./roles/power_monitoring/templates/read_gpu_amd_power.sh.j2": {
+      "path": "./roles/power_monitoring/templates/read_gpu_amd_power.sh.j2",
+      "hash": "9b8f2227701aad30069b2da1ed78546cf1f9773263fd82a68755e28885258423",
+      "last_modified": 1765126127,
+      "size": 1070
+    },
+    "./context_portal/logs/conport.log": {
+      "path": "./context_portal/logs/conport.log",
+      "hash": "41cfb37f06852c3b341741389e1a9ab39aea380cf0349e653c64eee72c3aec4f",
+      "last_modified": 1765051982,
+      "size": 105854
+    },
+    "./roles/power_monitoring/tasks/detect_redfish.yml": {
+      "path": "./roles/power_monitoring/tasks/detect_redfish.yml",
+      "hash": "267c856c056806085d7a165a52383b7f4d8fba825d47ce10b78db1fb261dfb6b",
+      "last_modified": 1765125831,
+      "size": 386
+    },
+    "./roles/base/files/get_power_rapl_no_deps.bash": {
+      "path": "./roles/base/files/get_power_rapl_no_deps.bash",
+      "hash": "6a6856fd480e5d671d620e5599550029de1d642bd17727e947f51f72ade34a26",
+      "last_modified": 1764950225,
+      "size": 3190
+    },
+    "./projectBrief.md": {
+      "path": "./projectBrief.md",
+      "hash": "3340e2acfae7546ab02235b0f6f7bc8b8a0a906193cb299ad7530219d60e2754",
+      "last_modified": 1765124284,
+      "size": 19403
     },
     "./host_vars/lostsecret-intel.yml": {
       "path": "./host_vars/lostsecret-intel.yml",
@@ -57,11 +123,77 @@
       "last_modified": 1764950353,
       "size": 278
     },
+    "./roles/base/files/get_power_redfish_no_deps.bash": {
+      "path": "./roles/base/files/get_power_redfish_no_deps.bash",
+      "hash": "d2b9200687f07977de7486df318c29932dd55a161f6243b915c31471090a8dad",
+      "last_modified": 1764951689,
+      "size": 2978
+    },
+    "./group_vars/lostsecret_intel.yml": {
+      "path": "./group_vars/lostsecret_intel.yml",
+      "hash": "218491455320a3bcd582a127f898f267a3a9f81fd045fce19d914c165c0f4049",
+      "last_modified": 1765125803,
+      "size": 316
+    },
+    "./scripts/run-ansible.sh": {
+      "path": "./scripts/run-ansible.sh",
+      "hash": "ce65bbd4c9d34d26e5ded99211818a8686fc060578780c44e2147636886af5e0",
+      "last_modified": 1764956814,
+      "size": 440
+    },
+    "./roles/base/files/nvidia_smi_power_no_deps.bash": {
+      "path": "./roles/base/files/nvidia_smi_power_no_deps.bash",
+      "hash": "f035d19d372ccd4079cc12aab4380e08303a3d90044f256ba94e2f445d7a45f0",
+      "last_modified": 1764956396,
+      "size": 3012
+    },
+    "./roles/power_monitoring/vars/main.yml": {
+      "path": "./roles/power_monitoring/vars/main.yml",
+      "hash": "c906648ce4d510c9a7a414a7794597093c01957ab8f5917d62186a675a24823f",
+      "last_modified": 1765125909,
+      "size": 446
+    },
+    "./README.md": {
+      "path": "./README.md",
+      "hash": "6e48b4281ca7fd53fef4f61e77f7722b63923b8c09e0bbf2d2f5d2b0d6b45443",
+      "last_modified": 1763826085,
+      "size": 1491
+    },
     "./test-framework/tests/test_redfish_local.yml": {
       "path": "./test-framework/tests/test_redfish_local.yml",
       "hash": "1fbd4446ac43cda75a3b52fcde680329fa7f9084ce0719b347df75737bac2101",
       "last_modified": 1764950560,
       "size": 1009
+    },
+    "./roles/base/files_new/lib_intel_rapl.bash": {
+      "path": "./roles/base/files_new/lib_intel_rapl.bash",
+      "hash": "7e9155a40e249d3aa03bcbaa5e1632a301d3606f04d1a83bd04d8c32afe5db32",
+      "last_modified": 1765058995,
+      "size": 2594
+    },
+    "./roles/power_monitoring/tasks/detect_gpu.yml": {
+      "path": "./roles/power_monitoring/tasks/detect_gpu.yml",
+      "hash": "7d320a70f6b8b2791f6e0f43b3ed07554ded44308affd08e1c80130695a7a522",
+      "last_modified": 1765125824,
+      "size": 815
+    },
+    "./roles/power_monitoring/tasks/detect_rapl.yml": {
+      "path": "./roles/power_monitoring/tasks/detect_rapl.yml",
+      "hash": "6d6201f9e1b02d164fccc6b3a9be7a6edaf17d81ad76e87634db9e41b13c291a",
+      "last_modified": 1765125814,
+      "size": 809
+    },
+    "./opencode.jsonc": {
+      "path": "./opencode.jsonc",
+      "hash": "95f640c7b57b3b7a43e57264c1c95bd10e0fa650591fd2c79d4d5395e839b90c",
+      "last_modified": 1765125566,
+      "size": 1984
+    },
+    "./roles/power_monitoring/templates/read_redfish_power.sh.j2": {
+      "path": "./roles/power_monitoring/templates/read_redfish_power.sh.j2",
+      "hash": "0fa3d26a3e63546b9d24aa6bb620e398129ff0312c51c8655391ce9c294f682a",
+      "last_modified": 1765126144,
+      "size": 712
     },
     "./context_portal/alembic/versions/2025_06_17_initial_schema.py": {
       "path": "./context_portal/alembic/versions/2025_06_17_initial_schema.py",
@@ -69,11 +201,71 @@
       "last_modified": 1764608499,
       "size": 8538
     },
-    "./roles/base/tasks/main.yml": {
-      "path": "./roles/base/tasks/main.yml",
-      "hash": "95cdef452d5f0e34abaa9c8682ccecb830fdbdb6f00512f7149c2439b21e14ba",
-      "last_modified": 1764956640,
-      "size": 1202
+    "./context_portal/alembic/env.py": {
+      "path": "./context_portal/alembic/env.py",
+      "hash": "8662ce0cbd9f5a732668434dad5b224f649f11d64325b213ecd2ba26feb6e2be",
+      "last_modified": 1764608499,
+      "size": 2135
+    },
+    "./roles/power_monitoring/tasks/deploy_scripts.yml": {
+      "path": "./roles/power_monitoring/tasks/deploy_scripts.yml",
+      "hash": "d01d279acb489046af388784ff65a263f7e77f81822c18677dff6b4c079f024a",
+      "last_modified": 1765125842,
+      "size": 1772
+    },
+    "./test-framework/tests/test_rapl_remote.yml": {
+      "path": "./test-framework/tests/test_rapl_remote.yml",
+      "hash": "034b782ada8c044106cdc40c882b3142d0456ec1c0f036569b314b180d3c8ad4",
+      "last_modified": 1764622228,
+      "size": 899
+    },
+    "./roles/base/files/get_power_amd_rapl_no_deps.bash": {
+      "path": "./roles/base/files/get_power_amd_rapl_no_deps.bash",
+      "hash": "e96e398d8bd0d9eab1206f47b727d178163780d17d2af8dc2909d76f6e68f9d5",
+      "last_modified": 1764951783,
+      "size": 2829
+    },
+    "./test-framework/tests/test_rapl_local.yml": {
+      "path": "./test-framework/tests/test_rapl_local.yml",
+      "hash": "1c2b8484ac58bd1825f30d51ffec7614987738d4d21ca5f21b1e7960b29f7320",
+      "last_modified": 1764950553,
+      "size": 938
+    },
+    "./roles/power_monitoring/tasks/main.yml": {
+      "path": "./roles/power_monitoring/tasks/main.yml",
+      "hash": "80296ca9eb96fde9d0698d5a3e0c0a14f60c4233ea43dfa49e9480cb95fb939b",
+      "last_modified": 1765125795,
+      "size": 418
+    },
+    "./roles/base/files/error_handling.bash": {
+      "path": "./roles/base/files/error_handling.bash",
+      "hash": "c382efa51acb043af9d4f1852c63cdb30d3d0fb197c3705650ce2b2622ed8e39",
+      "last_modified": 1765051778,
+      "size": 4664
+    },
+    "./roles/power_monitoring/templates/discover_gpu_sensors.sh.j2": {
+      "path": "./roles/power_monitoring/templates/discover_gpu_sensors.sh.j2",
+      "hash": "96af1a60074fdf68650e8a3f8b794287a8dc2397ef59b4bd1733f5b4a762b6aa",
+      "last_modified": 1765125898,
+      "size": 807
+    },
+    "./test-framework/tests/test_component_local.yml": {
+      "path": "./test-framework/tests/test_component_local.yml",
+      "hash": "b280bf8de79741c51a1fb455b9cd7a0cd67832bdd26a598c726ce43b56b1620b",
+      "last_modified": 1764622233,
+      "size": 997
+    },
+    "./inventory/hosts.ini": {
+      "path": "./inventory/hosts.ini",
+      "hash": "354139e70089e769dbf8d99db482016f8a90c19a0c5f833aa219cc52affc24de",
+      "last_modified": 1763827598,
+      "size": 61
+    },
+    "./roles/power_monitoring/tasks/deploy_agent_config.yml": {
+      "path": "./roles/power_monitoring/tasks/deploy_agent_config.yml",
+      "hash": "44aa830f44d87e56de6e8d82336f90c033265fa850e2decc8405ceaeeea99ca7",
+      "last_modified": 1765126187,
+      "size": 607
     },
     "./context_portal/alembic.ini": {
       "path": "./context_portal/alembic.ini",
@@ -86,174 +278,6 @@
       "hash": "ab742b4fe756526a339886711134fb9813e8f4cdbe73310eb9bbc543ffb9ab6f",
       "last_modified": 1764947340,
       "size": 4779
-    },
-    "./projectBrief.md": {
-      "path": "./projectBrief.md",
-      "hash": "3340e2acfae7546ab02235b0f6f7bc8b8a0a906193cb299ad7530219d60e2754",
-      "last_modified": 1765124284,
-      "size": 19403
-    },
-    "./ansible.cfg": {
-      "path": "./ansible.cfg",
-      "hash": "af5f1c7d017476596ca5866a4bcb32ec011461c80d2c79624328ef4c7432c474",
-      "last_modified": 1764956652,
-      "size": 235
-    },
-    "./plan_for_dependency_elimination.md": {
-      "path": "./plan_for_dependency_elimination.md",
-      "hash": "528196802f479e4646a7a47d930de91c29fb32f566ef1da591fc7f630192ec92",
-      "last_modified": 1764949951,
-      "size": 3932
-    },
-    "./inventory/hosts.ini": {
-      "path": "./inventory/hosts.ini",
-      "hash": "354139e70089e769dbf8d99db482016f8a90c19a0c5f833aa219cc52affc24de",
-      "last_modified": 1763827598,
-      "size": 61
-    },
-    "./roles/base/files/get_power_rapl_no_deps.bash": {
-      "path": "./roles/base/files/get_power_rapl_no_deps.bash",
-      "hash": "6a6856fd480e5d671d620e5599550029de1d642bd17727e947f51f72ade34a26",
-      "last_modified": 1764950225,
-      "size": 3190
-    },
-    "./context_portal/logs/conport.log": {
-      "path": "./context_portal/logs/conport.log",
-      "hash": "41cfb37f06852c3b341741389e1a9ab39aea380cf0349e653c64eee72c3aec4f",
-      "last_modified": 1765051982,
-      "size": 105854
-    },
-    "./roles/base/files/nvidia_smi_power_no_deps.bash": {
-      "path": "./roles/base/files/nvidia_smi_power_no_deps.bash",
-      "hash": "f035d19d372ccd4079cc12aab4380e08303a3d90044f256ba94e2f445d7a45f0",
-      "last_modified": 1764956396,
-      "size": 3012
-    },
-    "./roles/base/files/error_handling.bash": {
-      "path": "./roles/base/files/error_handling.bash",
-      "hash": "c382efa51acb043af9d4f1852c63cdb30d3d0fb197c3705650ce2b2622ed8e39",
-      "last_modified": 1765051778,
-      "size": 4664
-    },
-    "./test-framework/tests/test_component_remote.yml": {
-      "path": "./test-framework/tests/test_component_remote.yml",
-      "hash": "0c871ca30fdfd84416ec69ed2111e520c9d272b653af4a8d37a2f089816fbd12",
-      "last_modified": 1764622239,
-      "size": 995
-    },
-    "./roles/power_monitoring/tasks/detect_gpu.yml": {
-      "path": "./roles/power_monitoring/tasks/detect_gpu.yml",
-      "hash": "7d320a70f6b8b2791f6e0f43b3ed07554ded44308affd08e1c80130695a7a522",
-      "last_modified": 1765125824,
-      "size": 815
-    },
-    "./roles/base/files/get_hw_info.bash": {
-      "path": "./roles/base/files/get_hw_info.bash",
-      "hash": "4d25a4e9d29989321bdc046fe24caf42483b5cda432b455ba5eff4e645a58e4f",
-      "last_modified": 1764950268,
-      "size": 2359
-    },
-    "./roles/power_monitoring/tasks/deploy_agent_config.yml": {
-      "path": "./roles/power_monitoring/tasks/deploy_agent_config.yml",
-      "hash": "cff7b9f949d8cf7053606b09a0c4532ef4ba999628d12edc38e2b35e41dca86c",
-      "last_modified": 1765125850,
-      "size": 419
-    },
-    "./roles/base/files_new/lib_intel_rapl.bash": {
-      "path": "./roles/base/files_new/lib_intel_rapl.bash",
-      "hash": "7e9155a40e249d3aa03bcbaa5e1632a301d3606f04d1a83bd04d8c32afe5db32",
-      "last_modified": 1765058995,
-      "size": 2594
-    },
-    "./roles/power_monitoring/tasks/detect_rapl.yml": {
-      "path": "./roles/power_monitoring/tasks/detect_rapl.yml",
-      "hash": "6d6201f9e1b02d164fccc6b3a9be7a6edaf17d81ad76e87634db9e41b13c291a",
-      "last_modified": 1765125814,
-      "size": 809
-    },
-    "./scripts/run-ansible.sh": {
-      "path": "./scripts/run-ansible.sh",
-      "hash": "ce65bbd4c9d34d26e5ded99211818a8686fc060578780c44e2147636886af5e0",
-      "last_modified": 1764956814,
-      "size": 440
-    },
-    "./roles/power_monitoring/templates/read_cpu_rapl_power.sh.j2": {
-      "path": "./roles/power_monitoring/templates/read_cpu_rapl_power.sh.j2",
-      "hash": "d879de726d30d70f9c755aa87aa55606c164865226ef76df049836ee1ef016a3",
-      "last_modified": 1765125879,
-      "size": 1559
-    },
-    "./README.md": {
-      "path": "./README.md",
-      "hash": "6e48b4281ca7fd53fef4f61e77f7722b63923b8c09e0bbf2d2f5d2b0d6b45443",
-      "last_modified": 1763826085,
-      "size": 1491
-    },
-    "./context_portal/alembic/env.py": {
-      "path": "./context_portal/alembic/env.py",
-      "hash": "8662ce0cbd9f5a732668434dad5b224f649f11d64325b213ecd2ba26feb6e2be",
-      "last_modified": 1764608499,
-      "size": 2135
-    },
-    "./context_portal/conport_vector_data/db8a1e74-1a34-4dd5-8d1d-bb9276bd8567/link_lists.bin": {
-      "path": "./context_portal/conport_vector_data/db8a1e74-1a34-4dd5-8d1d-bb9276bd8567/link_lists.bin",
-      "hash": "af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262",
-      "last_modified": 1765125783,
-      "size": 0
-    },
-    "./roles/power_monitoring/templates/power.conf.j2": {
-      "path": "./roles/power_monitoring/templates/power.conf.j2",
-      "hash": "97b57da06685cee6f8f18d7b5546e5e342a69115155a3be147a5cf0bf1b30248",
-      "last_modified": 1765125867,
-      "size": 686
-    },
-    "./test-framework/tests/test_redfish_remote.yml": {
-      "path": "./test-framework/tests/test_redfish_remote.yml",
-      "hash": "850489537abb21a3fce8a9169c6df5579fd82d532b360ca74116bb4c440e53b1",
-      "last_modified": 1764622250,
-      "size": 961
-    },
-    "./roles/base/files/get_power_redfish_no_deps.bash": {
-      "path": "./roles/base/files/get_power_redfish_no_deps.bash",
-      "hash": "d2b9200687f07977de7486df318c29932dd55a161f6243b915c31471090a8dad",
-      "last_modified": 1764951689,
-      "size": 2978
-    },
-    "./roles/power_monitoring/tasks/detect_redfish.yml": {
-      "path": "./roles/power_monitoring/tasks/detect_redfish.yml",
-      "hash": "267c856c056806085d7a165a52383b7f4d8fba825d47ce10b78db1fb261dfb6b",
-      "last_modified": 1765125831,
-      "size": 386
-    },
-    "./roles/base/files/redfish_power_no_deps.bash": {
-      "path": "./roles/base/files/redfish_power_no_deps.bash",
-      "hash": "ba7184c3f4cd020acede7ca8d85b55fe48a70c4c40cb20dbe108fdbd6157a879",
-      "last_modified": 1764952920,
-      "size": 5846
-    },
-    "./test-framework/tests/test_rapl_local.yml": {
-      "path": "./test-framework/tests/test_rapl_local.yml",
-      "hash": "1c2b8484ac58bd1825f30d51ffec7614987738d4d21ca5f21b1e7960b29f7320",
-      "last_modified": 1764950553,
-      "size": 938
-    },
-    "./group_vars/lostsecret_intel.yml": {
-      "path": "./group_vars/lostsecret_intel.yml",
-      "hash": "218491455320a3bcd582a127f898f267a3a9f81fd045fce19d914c165c0f4049",
-      "last_modified": 1765125803,
-      "size": 316
-    },
-    "./roles/power_monitoring/vars/main.yml": {
-      "path": "./roles/power_monitoring/vars/main.yml",
-      "hash": "c906648ce4d510c9a7a414a7794597093c01957ab8f5917d62186a675a24823f",
-      "last_modified": 1765125909,
-      "size": 446
-    },
-    "./test-framework/tests/test_rapl_remote.yml": {
-      "path": "./test-framework/tests/test_rapl_remote.yml",
-      "hash": "034b782ada8c044106cdc40c882b3142d0456ec1c0f036569b314b180d3c8ad4",
-      "last_modified": 1764622228,
-      "size": 899
     }
   },
   "embedding_model": "BAAI/bge-small-en-v1.5",

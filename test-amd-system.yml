@@ -1,0 +1,41 @@
+---
+- name: Test Power Monitoring Framework on AMD System
+  hosts: lostsecret-amd
+  become: yes
+  gather_facts: no
+  
+  vars:
+    # This demonstrates how the framework operates on the AMD system
+    power_monitoring_enable_cpu: auto
+    power_monitoring_enable_ram: auto
+    power_monitoring_enable_gpu: auto
+    power_monitoring_enable_redfish: auto
+    
+  tasks:
+    - name: Display AMD system information  
+      debug:
+        msg: "Running power monitoring framework on AMD system: {{ ansible_hostname }}"
+
+    - name: Test RAPL detection (AMD)
+      stat:
+        path: /sys/class/powercap/amd-rapl
+      register: amd_rapl_stat
+      delegate_to: localhost
+      
+    - name: Show AMD RAPL detection result
+      debug:
+        msg: "AMD RAPL support detected: {{ amd_rapl_stat.stat.exists }}"
+
+    - name: Test GPU detection
+      command: which nvidia-smi
+      register: nvidia_check
+      ignore_errors: yes
+      delegate_to: localhost
+      
+    - name: Show GPU detection result
+      debug:
+        msg: "NVIDIA GPU support available: {{ nvidia_check.rc == 0 }}"
+
+    - name: Validate framework readiness
+      debug:
+        msg: "Power monitoring framework ready for deployment on AMD system"

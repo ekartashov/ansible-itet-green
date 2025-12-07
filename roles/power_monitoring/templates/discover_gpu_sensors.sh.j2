@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# GPU Sensor Discovery Script
+# This script outputs LLD JSON for detected GPUs
+
+# Initialize JSON array
+echo "["
+
+# Check for NVIDIA GPUs
+if command -v nvidia-smi >/dev/null 2>&1; then
+    # Count NVIDIA GPUs
+    NUM_GPUS=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits)
+    
+    for (( i=0; i<NUM_GPUS; i++ )); do
+        if [ "$i" -gt 0 ]; then
+            echo ","
+        fi
+        echo "  { \"{#GPU_INDEX}\": \"$i\", \"{#GPU_VENDOR}\": \"NVIDIA\" }"
+    done
+fi
+
+# Check for AMD GPUs
+if command -v rocm-smi >/dev/null 2>&1; then
+    # Count AMD GPUs (this is a simplified approach)
+    # In practice, you'd use a more robust method to enumerate AMD GPUs
+    echo ","
+    echo "  { \"{#GPU_INDEX}\": \"0\", \"{#GPU_VENDOR}\": \"AMD\" }"
+fi
+
+# Close JSON array
+echo "]"

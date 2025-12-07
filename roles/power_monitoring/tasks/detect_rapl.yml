@@ -1,0 +1,29 @@
+---
+# Task file for detecting RAPL capabilities
+
+- name: Check for Intel RAPL support
+  stat:
+    path: /sys/class/powercap/intel-rapl
+  register: intel_rapl_stat
+  delegate_to: localhost
+
+- name: Check for AMD RAPL support
+  stat:
+    path: /sys/class/powercap/amd-rapl
+  register: amd_rapl_stat
+  delegate_to: localhost
+
+- name: Set fact for Intel RAPL availability
+  set_fact:
+    power_monitoring_has_intel_rapl: "{{ intel_rapl_stat.stat.exists }}"
+  delegate_to: localhost
+
+- name: Set fact for AMD RAPL availability
+  set_fact:
+    power_monitoring_has_amd_rapl: "{{ amd_rapl_stat.stat.exists }}"
+  delegate_to: localhost
+
+- name: Display RAPL detection results
+  debug:
+    msg: "Intel RAPL: {{ power_monitoring_has_intel_rapl }}, AMD RAPL: {{ power_monitoring_has_amd_rapl }}"
+  delegate_to: localhost

@@ -1,0 +1,17 @@
+---
+# Main task file for power monitoring role
+
+- name: Include RAPL detection tasks
+  include_tasks: detect_rapl.yml
+
+- name: Include GPU detection tasks
+  include_tasks: detect_gpu.yml
+
+- name: Include Redfish detection tasks
+  include_tasks: detect_redfish.yml
+
+- name: Deploy monitoring scripts
+  include_tasks: deploy_scripts.yml
+
+- name: Deploy Zabbix agent configuration
+  include_tasks: deploy_agent_config.yml

@@ -1,0 +1,19 @@
+---
+# Task file for deploying Zabbix agent configuration
+
+- name: Template and deploy Zabbix agent configuration
+  template:
+    src: power.conf.j2
+    dest: /etc/zabbix/zabbix_agentd.d/power.conf
+    owner: root
+    group: root
+    mode: '0644'
+  delegate_to: localhost
+
+- name: Restart Zabbix agent service
+  systemd:
+    name: zabbix-agent
+    state: restarted
+    enabled: yes
+  delegate_to: localhost
+  become: yes

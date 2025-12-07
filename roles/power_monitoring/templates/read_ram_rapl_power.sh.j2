@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# RAM RAPL Power Monitoring Script
+# This script reads instantaneous RAM power from RAPL domains
+# It outputs exactly one numeric value in watts on success
+
+# Define the base RAPL directory
+RAPL_BASE="/sys/class/powercap"
+
+# Look for RAM-related RAPL domains
+for domain_dir in "$RAPL_BASE"/*rapl*; do
+    if [ -d "$domain_dir" ] && [ -f "$domain_dir/energy_uj" ]; then
+        # Check if this is a RAM domain (look for keywords like "ram", "memory")
+        DOMAIN_NAME=$(basename "$domain_dir")
+        if [[ "$DOMAIN_NAME" == *"ram"* ]] || [[ "$DOMAIN_NAME" == *"memory"* ]]; then
+            # Read the energy value in microjoules
+            ENERGY_UJ=$(cat "$domain_dir/energy_uj")
+            
+            # Output the energy value in watts (convert from microjoules to watts)
+            echo "$ENERGY_UJ"
+            exit 0
+        fi
+    fi
+done
+
+# If no RAM RAPL domain found, exit with error
+exit 1

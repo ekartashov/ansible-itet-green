@@ -1,18 +1,10 @@
 {
-  // OpenCode project configuration
-
   "$schema": "https://opencode.ai/config.json",
 
-  // Project-wide behavioral rules for all agents.
-  // This is where your generic ConPort strategy should live.
   "instructions": [
     ".opencode/instructions/conport-memory-strategy.md"
-    // You can add more shared policies later, e.g.:
-    // ".opencode/prompts/global_policies.md",
-    // ".opencode/prompts/severity_policy.md"
   ],
 
-  // MCP (Model Communication Protocol) servers for the project
   "mcp": {
     "conport": {
       "type": "local",
@@ -38,26 +30,50 @@
     }
   },
 
-  // LSP servers
   "lsp": {
     "bash": {
       "command": ["npx", "--yes", "bash-language-server", "start"],
       "extensions": [".sh", ".bash"]
     },
-
     "pyright": {
       "command": ["npx", "--yes", "pyright", "--stdio"],
       "extensions": [".py", ".pyi"]
     },
-
     "yaml-ls": {
       "command": ["npx", "--yes", "yaml-language-server", "--stdio"],
       "extensions": [".yaml", ".yml"]
     },
-
     "json": {
       "command": ["npx", "--yes", "vscode-json-languageserver", "--stdio"],
       "extensions": [".json", ".jsonc"]
     }
+  },
+
+  "agent": {
+    "lostsecret-orchestrator": {
+      "description": "Primary agent for lostsecret-intel: plans + edits + tests + commits using ConPort and ck.",
+      "mode": "primary", // make it a primary agent alongside build/plan 
+      "prompt": "{file:.opencode/prompts/power-monitoring-implementation.md}", // your big checklist
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true
+      },
+      "permission": {
+        "bash": {
+          "git push": "ask",  // be paranoid about pushes
+          "*": "allow"
+        }
+      }
+    },
+
+    // Optional: hide Plan so you don't accidentally end up in a blocked agent
+    "plan": {
+      "disable": true       // disables the built-in Plan agent in this project 
+    }
+
+    // You can also add a small override for build here later if you want,
+    // but it's fine to leave build with the default config.
   }
 }
+

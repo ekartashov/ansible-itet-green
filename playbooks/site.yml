@@ -3,6 +3,6 @@
   hosts: lostsecret_intel
   become: true
   gather_facts: no
-
   roles:
     - role: base
+    - role: power_monitoring

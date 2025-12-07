@@ -1,0 +1,14 @@
+# CPU package power in watts
+UserParameter=power.cpu.package0,/usr/local/share/zabbix_power_monitoring/read_cpu_rapl_power.sh
+
+# RAM power in watts (if RAPL domain exists)
+UserParameter=power.ram.total,/usr/local/share/zabbix_power_monitoring/read_ram_rapl_power.sh
+
+# GPU power in watts, by index (NVIDIA or AMD)
+UserParameter=power.gpu[*],/usr/local/share/zabbix_power_monitoring/read_gpu_power.sh "$1"
+
+# Platform power via Redfish/IPMI (if supported)
+UserParameter=power.redfish.platform,/usr/local/share/zabbix_power_monitoring/read_redfish_power.sh
+
+# GPU Low-Level Discovery (LLD)
+UserParameter=power.gpu.discovery,/usr/local/share/zabbix_power_monitoring/discover_gpu_sensors.sh

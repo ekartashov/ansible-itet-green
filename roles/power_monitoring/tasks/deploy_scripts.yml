@@ -1,0 +1,61 @@
+---
+# Task file for deploying monitoring scripts
+
+- name: Create directory for power monitoring scripts
+  file:
+    path: /usr/local/share/zabbix_power_monitoring
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  delegate_to: localhost
+
+- name: Template and deploy CPU RAPL monitoring script
+  template:
+    src: read_cpu_rapl_power.sh.j2
+    dest: /usr/local/share/zabbix_power_monitoring/read_cpu_rapl_power.sh
+    owner: root
+    group: root
+    mode: '0755'
+  delegate_to: localhost
+  when: power_monitoring_has_intel_rapl or power_monitoring_has_amd_rapl
+
+- name: Template and deploy RAM RAPL monitoring script
+  template:
+    src: read_ram_rapl_power.sh.j2
+    dest: /usr/local/share/zabbix_power_monitoring/read_ram_rapl_power.sh
+    owner: root
+    group: root
+    mode: '0755'
+  delegate_to: localhost
+  when: power_monitoring_has_intel_rapl or power_monitoring_has_amd_rapl
+
+- name: Template and deploy NVIDIA GPU monitoring script
+  template:
+    src: read_gpu_nvidia_power.sh.j2
+    dest: /usr/local/share/zabbix_power_monitoring/read_gpu_nvidia_power.sh
+    owner: root
+    group: root
+    mode: '0755'
+  delegate_to: localhost
+  when: power_monitoring_has_nvidia_gpu
+
+- name: Template and deploy AMD GPU monitoring script
+  template:
+    src: read_gpu_amd_power.sh.j2
+    dest: /usr/local/share/zabbix_power_monitoring/read_gpu_amd_power.sh
+    owner: root
+    group: root
+    mode: '0755'
+  delegate_to: localhost
+  when: power_monitoring_has_amd_gpu
+
+- name: Template and deploy Redfish monitoring script
+  template:
+    src: read_redfish_power.sh.j2
+    dest: /usr/local/share/zabbix_power_monitoring/read_redfish_power.sh
+    owner: root
+    group: root
+    mode: '0755'
+  delegate_to: localhost
+  when: power_monitoring_has_redfish

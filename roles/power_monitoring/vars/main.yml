@@ -1,0 +1,16 @@
+---
+# Default variables for power monitoring role
+
+# Enable/disable components
+power_monitoring_enable_cpu: auto
+power_monitoring_enable_ram: auto
+power_monitoring_enable_gpu: auto
+power_monitoring_enable_redfish: auto
+
+# Recommended polling interval
+power_monitoring_recommended_poll_interval: 5s
+
+# Redfish configuration (when enabled)
+power_monitoring_redfish_bmc_url: ""
+power_monitoring_redfish_user: ""
+power_monitoring_redfish_password: ""

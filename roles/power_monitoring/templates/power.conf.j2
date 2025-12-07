@@ -5,7 +5,7 @@ UserParameter=power.cpu.package0,/usr/local/share/zabbix_power_monitoring/read_c
 UserParameter=power.ram.total,/usr/local/share/zabbix_power_monitoring/read_ram_rapl_power.sh
 
 # GPU power in watts, by index (NVIDIA or AMD)
-UserParameter=power.gpu[*],/usr/local/share/zabbix_power_monitoring/read_gpu_power.sh "$1"
+UserParameter=power.gpu[*],/usr/local/share/zabbix_power_monitoring/read_gpu_nvidia_power.sh "$1"
 
 # Platform power via Redfish/IPMI (if supported)
 UserParameter=power.redfish.platform,/usr/local/share/zabbix_power_monitoring/read_redfish_power.sh

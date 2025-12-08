@@ -9,7 +9,7 @@
 #       * prints to stdout one numeric value (watts) with 3 decimals
 #       * exits with code 0
 #   - On failure:
-#       * exits with code 1
+#       * exits with code 1 (and prints nothing)
 
 set -eu
 
@@ -43,7 +43,8 @@ case "$pkg_index" in
 esac
 
 # Bounds check
-num_pkgs=${#RAPL_ENERGY_FILES[@]}
+num_pkgs={{ power_monitoring_cpu_rapl_energy_files | length }}
+
 if [ "$num_pkgs" -eq 0 ]; then
   # Script shouldn't have been deployed in this case
   exit 1

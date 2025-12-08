@@ -24,6 +24,6 @@
 - name: Deploy monitoring scripts
   include_tasks: deploy_scripts.yml
 
-# Deploy Zabbix agent configuration
-- name: Deploy Zabbix agent configuration
-  include_tasks: deploy_agent_config.yml
+# # Deploy Zabbix agent configuration
+# - name: Deploy Zabbix agent configuration
+#   include_tasks: deploy_agent_config.yml

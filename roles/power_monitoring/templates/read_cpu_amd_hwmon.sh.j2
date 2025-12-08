@@ -1,30 +1,34 @@
 #!/usr/bin/env bash
-# CPU power via AMD hwmon (fam15h_power / zenpower)
+# CPU power via AMD hwmon (fam15h_power / zenpower / similar)
 # Strictly runtime-only: detection is done in Ansible.
 # Outputs watts as a single float with 3 decimals, e.g.: 42.123
+#
+# Contract:
+#   - On success:
+#       * prints exactly one numeric value (watts) with 3 decimals
+#       * exits with code 0
+#   - On failure:
+#       * prints nothing
+#       * exits with non-zero code
 
 set -euo pipefail
+export LC_NUMERIC=C
 
-CONFIG_FILE="/etc/power-monitoring/amd_hwmon.conf"
+# Ansible injects the detected hwmon directory here
+AMD_HWMON_DIR="{{ power_monitoring_amd_cpu_hwmon_dir | default('') }}"
 
-# Load AMD_HWMON_DIR from config if present
-if [ -r "$CONFIG_FILE" ]; then
-  # shellcheck disable=SC1090
-  . "$CONFIG_FILE"
-fi
-
-# Expect Ansible to have written AMD_HWMON_DIR
-if [ "${AMD_HWMON_DIR:-}" = "" ] || [ ! -d "$AMD_HWMON_DIR" ]; then
-  # Consistent failure output for monitoring systems
-  printf '0.000\n'
+# Sanity check
+if [ -z "$AMD_HWMON_DIR" ] || [ ! -d "$AMD_HWMON_DIR" ]; then
   exit 1
 fi
 
 total_uW=0
+found_any=0
 
 # Sum all power*_input values (in microwatts)
 for f in "$AMD_HWMON_DIR"/power*_input; do
   [ -r "$f" ] || continue
+
   IFS= read -r value < "$f" || value=''
 
   # Ensure it's an integer
@@ -35,10 +39,11 @@ for f in "$AMD_HWMON_DIR"/power*_input; do
   esac
 
   total_uW=$(( total_uW + value ))
+  found_any=1
 done
 
-if [ "$total_uW" -le 0 ]; then
-  printf '0.000\n'
+# If we found nothing or total is non-positive → treat as failure
+if [ "$found_any" -eq 0 ] || [ "$total_uW" -le 0 ]; then
   exit 1
 fi
 
@@ -51,3 +56,4 @@ milli=$(( micro / 1000 ))
 
 # Print as X.YYY
 printf '%d.%03d\n' "$watts" "$milli"
+exit 0

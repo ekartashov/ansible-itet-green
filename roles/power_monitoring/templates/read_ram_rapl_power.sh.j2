@@ -41,7 +41,8 @@ case "$pkg_index" in
     ;;
 esac
 
-num_pkgs=${#RAPL_ENERGY_FILES[@]}
+num_pkgs={{ power_monitoring_ram_rapl_energy_files | length }}
+
 if [ "$num_pkgs" -eq 0 ]; then
   exit 1
 fi

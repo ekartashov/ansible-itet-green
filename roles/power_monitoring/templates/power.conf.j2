@@ -1,12 +1,16 @@
-# CPU package power in watts (per package)
+# CPU package power in watts (per package, Intel RAPL) or AMD hwmon fallback
 {% if power_monitoring_enable_cpu == "true" or power_monitoring_enable_cpu == "auto" %}
 {% if power_monitoring_has_intel_rapl | default(false) and power_monitoring_cpu_rapl_energy_files | length > 0 %}
 {% for path in power_monitoring_cpu_rapl_energy_files %}
 # CPU package {{ loop.index0 }} -> {{ path }}
 UserParameter=power.cpu.package{{ loop.index0 }},/usr/local/share/zabbix_power_monitoring/read_cpu_rapl_power.sh {{ loop.index0 }}
 {% endfor %}
+{% elif power_monitoring_has_amd_cpu_hwmon | default(false) %}
+# CPU total power via AMD hwmon (fallback when RAPL is unavailable)
+UserParameter=power.cpu.amd_hwmon,/usr/local/share/zabbix_power_monitoring/cpu_power_amd_hwmon.sh
 {% endif %}
 {% endif %}
+
 
 # RAM power in watts (per package DRAM RAPL domain)
 {% if power_monitoring_enable_ram == "true" or power_monitoring_enable_ram == "auto" %}

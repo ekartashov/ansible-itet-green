@@ -46,3 +46,46 @@
     msg: >-
       RAPL: {{ power_monitoring_has_intel_rapl }}
       ({{ power_monitoring_cpu_rapl_energy_files | length }} package domain(s) detected)
+
+- name: Detect AMD CPU hwmon (fam15h_power / zenpower) as fallback
+  ansible.builtin.shell:
+    cmd: |
+      set -eu
+      shopt -s nullglob
+
+      for d in /sys/class/hwmon/hwmon*; do
+        [ -d "$d" ] || continue
+
+        name_file="$d/name"
+        if [ ! -f "$name_file" ]; then
+          continue
+        fi
+
+        name=$(cat "$name_file" 2>/dev/null || echo "")
+
+        case "$name" in
+          fam15h_power|zenpower|zenpower3|amd_energy)
+            printf '%s\n' "$d"
+            exit 0
+            ;;
+        esac
+      done
+
+      # Nothing found → non-zero rc
+      exit 1
+  args:
+    executable: /bin/bash
+  register: amd_cpu_hwmon_detect
+  changed_when: false
+  failed_when: false
+  when:
+    - power_monitoring_enable_cpu | default('auto') != 'false'
+    - not power_monitoring_has_intel_rapl | default(false)
+
+- name: Set facts for AMD CPU hwmon availability
+  ansible.builtin.set_fact:
+    power_monitoring_has_amd_cpu_hwmon: "{{ amd_cpu_hwmon_detect.rc == 0 }}"
+    power_monitoring_amd_cpu_hwmon_dir: "{{ amd_cpu_hwmon_detect.stdout if amd_cpu_hwmon_detect.rc == 0 else '' }}"
+  when:
+    - power_monitoring_enable_cpu | default('auto') != 'false'
+    - not power_monitoring_has_intel_rapl | default(false)

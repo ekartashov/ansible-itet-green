@@ -53,7 +53,6 @@
     "lostsecret-orchestrator": {
       "description": "Primary agent for lostsecret-intel: plans + edits + tests + commits using ConPort and ck.",
       "mode": "primary", // make it a primary agent alongside build/plan 
-      "prompt": "{file:.opencode/prompts/power-monitoring-implementation.md}", // your big checklist
       "tools": {
         "write": true,
         "edit": true,

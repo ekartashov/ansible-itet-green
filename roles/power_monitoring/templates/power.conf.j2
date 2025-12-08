@@ -1,14 +1,34 @@
-# CPU package power in watts
-UserParameter=power.cpu.package0,/usr/local/share/zabbix_power_monitoring/read_cpu_rapl_power.sh
+# CPU package power in watts (per package)
+{% if power_monitoring_enable_cpu == "true" or power_monitoring_enable_cpu == "auto" %}
+{% if power_monitoring_has_intel_rapl | default(false) and power_monitoring_cpu_rapl_energy_files | length > 0 %}
+{% for path in power_monitoring_cpu_rapl_energy_files %}
+# CPU package {{ loop.index0 }} -> {{ path }}
+UserParameter=power.cpu.package{{ loop.index0 }},/usr/local/share/zabbix_power_monitoring/read_cpu_rapl_power.sh {{ loop.index0 }}
+{% endfor %}
+{% endif %}
+{% endif %}
 
-# RAM power in watts (if RAPL domain exists)
-UserParameter=power.ram.total,/usr/local/share/zabbix_power_monitoring/read_ram_rapl_power.sh
+# RAM power in watts (per package DRAM RAPL domain)
+{% if power_monitoring_enable_ram == "true" or power_monitoring_enable_ram == "auto" %}
+{% if power_monitoring_ram_rapl_energy_files | default([]) | length > 0 %}
+{% for path in power_monitoring_ram_rapl_energy_files %}
+# RAM package {{ loop.index0 }} -> {{ path }}
+UserParameter=power.ram.package{{ loop.index0 }},/usr/local/share/zabbix_power_monitoring/read_ram_rapl_power.sh {{ loop.index0 }}
+{% endfor %}
+{% endif %}
+{% endif %}
 
 # GPU power in watts, by index (NVIDIA or AMD)
+{% if power_monitoring_enable_gpu == "true" or power_monitoring_enable_gpu == "auto" %}
 UserParameter=power.gpu[*],/usr/local/share/zabbix_power_monitoring/read_gpu_nvidia_power.sh "$1"
+{% endif %}
 
 # Platform power via Redfish/IPMI (if supported)
+{% if power_monitoring_enable_redfish == "true" or power_monitoring_enable_redfish == "auto" %}
 UserParameter=power.redfish.platform,/usr/local/share/zabbix_power_monitoring/read_redfish_power.sh
+{% endif %}
 
 # GPU Low-Level Discovery (LLD)
+{% if power_monitoring_enable_gpu == "true" or power_monitoring_enable_gpu == "auto" %}
 UserParameter=power.gpu.discovery,/usr/local/share/zabbix_power_monitoring/discover_gpu_sensors.sh
+{% endif %}

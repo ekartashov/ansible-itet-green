@@ -8,7 +8,6 @@
     owner: root
     group: root
     mode: '0755'
-  delegate_to: localhost
 
 - name: Template and deploy CPU RAPL monitoring script
   template:
@@ -17,8 +16,9 @@
     owner: root
     group: root
     mode: '0755'
-  delegate_to: localhost
-  when: power_monitoring_has_intel_rapl or power_monitoring_has_amd_rapl
+  when:
+    - power_monitoring_enable_cpu | default('auto') != 'false'
+    - power_monitoring_has_intel_rapl | default(false)
 
 - name: Template and deploy RAM RAPL monitoring script
   template:
@@ -27,8 +27,9 @@
     owner: root
     group: root
     mode: '0755'
-  delegate_to: localhost
-  when: power_monitoring_has_intel_rapl or power_monitoring_has_amd_rapl
+  when:
+    - power_monitoring_enable_ram | default('auto') != 'false'
+    - power_monitoring_ram_rapl_energy_files | default([]) | length > 0
 
 - name: Template and deploy NVIDIA GPU monitoring script
   template:
@@ -37,8 +38,9 @@
     owner: root
     group: root
     mode: '0755'
-  delegate_to: localhost
-  when: power_monitoring_has_nvidia_gpu
+  when:
+    - power_monitoring_enable_gpu | default('auto') != 'false'
+    - power_monitoring_has_nvidia_gpu | default(false)
 
 - name: Template and deploy AMD GPU monitoring script
   template:
@@ -47,8 +49,9 @@
     owner: root
     group: root
     mode: '0755'
-  delegate_to: localhost
-  when: power_monitoring_has_amd_gpu
+  when:
+    - power_monitoring_enable_gpu | default('auto') != 'false'
+    - power_monitoring_has_amd_gpu | default(false)
 
 - name: Template and deploy Redfish monitoring script
   template:
@@ -57,5 +60,6 @@
     owner: root
     group: root
     mode: '0755'
-  delegate_to: localhost
-  when: power_monitoring_has_redfish
+  when:
+    - power_monitoring_enable_redfish | default('auto') != 'false'
+    - power_monitoring_has_redfish | default(false)

@@ -4,9 +4,7 @@
 - name: Check for Redfish BMC configuration
   set_fact:
     power_monitoring_has_redfish: "{{ bmc_ip is defined and bmc_user is defined and bmc_pass is defined }}"
-  delegate_to: localhost
 
 - name: Display Redfish detection results
   debug:
     msg: "Redfish BMC available: {{ power_monitoring_has_redfish }}"
-  delegate_to: localhost

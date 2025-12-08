@@ -8,15 +8,13 @@
     owner: root
     group: root
     mode: '0644'
-  delegate_to: localhost
+  notify: Restart zabbix agent
 
 - name: (Test) Verify Zabbix agent configuration file was created
   stat:
     path: /etc/zabbix/zabbix_agentd.d/power.conf
-  delegate_to: localhost
   register: zabbix_conf_stat
 
 - name: Display Zabbix configuration status
   debug:
     msg: "Zabbix configuration file exists: {{ zabbix_conf_stat.stat.exists }}"
-  delegate_to: localhost

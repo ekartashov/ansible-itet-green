@@ -1,17 +1,29 @@
 ---
-# Main task file for power monitoring role
+# Main task file for power_monitoring role
 
+# CPU RAPL detection
 - name: Include RAPL detection tasks
   include_tasks: detect_rapl.yml
 
+# CPU RAM RAPL detection
+- name: Include RAM RAPL detection tasks
+  include_tasks: detect_ram_rapl.yml
+  when: power_monitoring_enable_ram | default('auto') != 'false'
+
+# GPU detection
 - name: Include GPU detection tasks
   include_tasks: detect_gpu.yml
+  when: power_monitoring_enable_gpu | default('auto') != 'false'
 
+# Redfish detection
 - name: Include Redfish detection tasks
   include_tasks: detect_redfish.yml
+  when: power_monitoring_enable_redfish | default('auto') != 'false'
 
+# Deploy scripts (CPU/RAM/GPU/Redfish)
 - name: Deploy monitoring scripts
   include_tasks: deploy_scripts.yml
 
+# Deploy Zabbix agent configuration
 - name: Deploy Zabbix agent configuration
   include_tasks: deploy_agent_config.yml

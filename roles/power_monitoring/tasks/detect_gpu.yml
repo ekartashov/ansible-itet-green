@@ -5,25 +5,20 @@
   command: which nvidia-smi
   register: nvidia_smi_result
   ignore_errors: true
-  delegate_to: localhost
 
 - name: Check for AMD GPU support (rocm-smi)
   command: which rocm-smi
   register: rocm_smi_result
   ignore_errors: true
-  delegate_to: localhost
 
 - name: Set fact for NVIDIA GPU availability
   set_fact:
     power_monitoring_has_nvidia_gpu: "{{ nvidia_smi_result.rc == 0 }}"
-  delegate_to: localhost
 
 - name: Set fact for AMD GPU availability
   set_fact:
     power_monitoring_has_amd_gpu: "{{ rocm_smi_result.rc == 0 }}"
-  delegate_to: localhost
 
 - name: Display GPU detection results
   debug:
     msg: "NVIDIA GPU: {{ power_monitoring_has_nvidia_gpu }}, AMD GPU: {{ power_monitoring_has_amd_gpu }}"
-  delegate_to: localhost

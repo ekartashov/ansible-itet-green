@@ -10,6 +10,7 @@ if command -v rocm-smi >/dev/null 2>&1; then
     POWER_OUTPUT=$(rocm-smi --showpower --json 2>/dev/null | grep -o '"power": [0-9]*' | cut -d' ' -f2 2>/dev/null)
     
     if [ -n "$POWER_OUTPUT" ]; then
+        # rocm-smi outputs in watts, so we can directly echo it
         echo "$POWER_OUTPUT"
         exit 0
     fi
@@ -21,9 +22,17 @@ for hwmon_dir in /sys/class/drm/card*/device/hwmon/hwmon*/; do
     if [ -f "$hwmon_dir/power1_input" ]; then
         POWER_VALUE=$(cat "$hwmon_dir/power1_input" 2>/dev/null)
         if [ -n "$POWER_VALUE" ] && [ "$POWER_VALUE" != "0" ]; then
-            # Convert from microwatts to watts if needed
-            # For now, just output what we found
-            echo "$POWER_VALUE"
+            # Check if value is in microwatts (common for hwmon)
+            # If value is > 1000000, assume it's in microwatts and convert to watts
+            if [ "$POWER_VALUE" -gt 1000000 ]; then
+                # Convert from microwatts to watts
+                watts=$((POWER_VALUE / 1000000))
+            else
+                # Assume already in watts
+                watts="$POWER_VALUE"
+            fi
+            
+            echo "$watts"
             exit 0
         fi
     fi

@@ -1,0 +1,80 @@
+---
+# Task file for detecting RAM/DRAM RAPL domains per CPU package
+
+- name: Reset RAM RAPL facts
+  ansible.builtin.set_fact:
+    power_monitoring_ram_rapl_energy_files: []
+    power_monitoring_has_ram_rapl: false
+
+- name: Detect DRAM/memory RAPL domains per package
+  ansible.builtin.shell:
+    cmd: |
+      set -eu
+      shopt -s nullglob
+
+      # Iterate over top-level intel-rapl:* domains (same ordering as detect_rapl.yml)
+      for pkg_dir in /sys/class/powercap/intel-rapl:*; do
+        [ -d "$pkg_dir" ] || continue
+
+        name_file="$pkg_dir/name"
+        if [ ! -f "$name_file" ]; then
+          continue
+        fi
+
+        # Only consider top-level package-* domains
+        if ! grep -q '^package-' "$name_file"; then
+          continue
+        fi
+
+        dram_path=""
+
+        # Look for subdomains like intel-rapl:0:1 with name "dram" / "memory" / "ram"
+        for sub in ${pkg_dir}:*; do
+          [ -d "$sub" ] || continue
+
+          sub_name_file="$sub/name"
+          sub_energy_file="$sub/energy_uj"
+
+          if [ ! -f "$sub_name_file" ] || [ ! -f "$sub_energy_file" ]; then
+            continue
+          fi
+
+          sub_name=$(cat "$sub_name_file" 2>/dev/null || echo "")
+
+          # Case-insensitive match for dram/memory/ram
+          case "${sub_name,,}" in
+            *dram*|*memory*|*ram*)
+              dram_path="$sub_energy_file"
+              break
+              ;;
+          esac
+        done
+
+        # Even if we don't find a DRAM domain for this package, print "-"
+        if [ -n "$dram_path" ]; then
+          printf '%s\n' "$dram_path"
+        else
+          printf '%s\n' "-\n"
+        fi
+      done
+  args:
+    executable: /bin/bash
+  register: ram_rapl_paths
+  changed_when: false
+  failed_when: false
+  when:
+    - power_monitoring_has_intel_rapl | default(false)
+
+- name: Set RAM RAPL facts
+  ansible.builtin.set_fact:
+    power_monitoring_ram_rapl_energy_files: "{{ ram_rapl_paths.stdout_lines | default([]) }}"
+    power_monitoring_has_ram_rapl: >-
+      {{ (ram_rapl_paths.stdout_lines | default([]) | reject('equalto', '-') | list | length) > 0 }}
+  when:
+    - ram_rapl_paths is defined
+
+- name: Display RAM RAPL detection results
+  ansible.builtin.debug:
+    msg: >-
+      RAM RAPL: {{ power_monitoring_has_intel_rapl }}
+      ({{ power_monitoring_cpu_rapl_energy_files | length }} package domain(s) detected)

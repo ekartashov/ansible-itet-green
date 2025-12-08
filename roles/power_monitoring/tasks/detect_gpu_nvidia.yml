@@ -1,24 +1,43 @@
 ---
-# Task file for detecting NVIDIA GPU capabilities
+# Task file for detecting NVIDIA GPU power capability
 
-- name: Query NVIDIA GPUs via nvidia-smi
-  ansible.builtin.command: >
-    nvidia-smi --query-gpu=index --format=csv,noheader,nounits
-  register: nvidia_smi_query
+- name: Detect NVIDIA GPU power via nvidia-smi
+  ansible.builtin.shell:
+    cmd: |
+      set -eu
+
+      if ! command -v nvidia-smi >/dev/null 2>&1; then
+        exit 1
+      fi
+
+      # Query index + power; keep only rows with numeric power
+      nvidia-smi \
+        --query-gpu=index,power.draw \
+        --format=csv,noheader,nounits 2>/dev/null |
+      awk -F',' '
+        NF >= 2 {
+          gsub(/^[[:space:]]+|[[:space:]]+$/, "", $1);
+          gsub(/^[[:space:]]+|[[:space:]]+$/, "", $2);
+          if ($2 ~ /^[0-9.]+$/) print $1;
+        }
+      '
+  args:
+    executable: /bin/bash
+  register: nvidia_power_indices
   changed_when: false
   failed_when: false
 
 - name: Set facts for NVIDIA GPU availability
   ansible.builtin.set_fact:
     power_monitoring_has_nvidia_gpu: >-
-      {{ nvidia_smi_query.rc == 0
-         and (nvidia_smi_query.stdout_lines | default([]) | length) > 0 }}
+      {{ nvidia_power_indices.rc == 0
+         and (nvidia_power_indices.stdout_lines | default([]) | length) > 0 }}
     power_monitoring_nvidia_gpu_indices: >-
-      {{ nvidia_smi_query.stdout_lines | default([]) | map('trim') | list }}
-  when: nvidia_smi_query is defined
+      {{ nvidia_power_indices.stdout_lines | default([]) | map('trim') | list }}
+  when: nvidia_power_indices is defined
 
 - name: Display NVIDIA GPU detection results
   ansible.builtin.debug:
     msg: >-
-      NVIDIA GPU: {{ power_monitoring_has_nvidia_gpu | default(false) }}
+      NVIDIA GPU power: {{ power_monitoring_has_nvidia_gpu | default(false) }}
       (indices={{ power_monitoring_nvidia_gpu_indices | default([]) }})

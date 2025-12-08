@@ -1,7 +1,7 @@
 ---
-# Task file for detecting AMD GPU capabilities
+# Task file for detecting AMD GPU power capability
 
-- name: Detect AMD GPUs via rocm-smi (if available)
+- name: Detect AMD GPU power via rocm-smi
   ansible.builtin.shell:
     cmd: |
       set -eu
@@ -10,27 +10,38 @@
         exit 1
       fi
 
-      # List GPU ids; one per line.
-      rocm-smi --showid --json 2>/dev/null \
-        | grep -o '"gpu_id"[[:space:]]*:[[:space:]]*[0-9]\+' \
-        | sed 's/.*://; s/ //g'
+      # Use the concise rocm-smi table and extract indices
+      # that have a numeric AvgPwr value (column 3).
+      rocm-smi 2>/dev/null | awk '
+        # data rows start with an integer GPU index
+        $1 ~ /^[0-9]+$/ {
+          idx = $1
+          pwr = $3
+          gsub(/W$/, "", pwr)
+
+          # Require a numeric, non-N/A power value
+          if (pwr != "N/A" && pwr ~ /^[0-9.]+$/) {
+            print idx
+          }
+        }
+      '
   args:
     executable: /bin/bash
-  register: rocm_smi_ids
+  register: rocm_smi_power_indices
   changed_when: false
   failed_when: false
 
 - name: Set facts for AMD GPU availability
   ansible.builtin.set_fact:
     power_monitoring_has_amd_gpu: >-
-      {{ rocm_smi_ids.rc == 0
-         and (rocm_smi_ids.stdout_lines | default([]) | length) > 0 }}
+      {{ rocm_smi_power_indices.rc == 0
+         and (rocm_smi_power_indices.stdout_lines | default([]) | length) > 0 }}
     power_monitoring_amd_gpu_indices: >-
-      {{ rocm_smi_ids.stdout_lines | default([]) | map('trim') | list }}
-  when: rocm_smi_ids is defined
+      {{ rocm_smi_power_indices.stdout_lines | default([]) | map('trim') | list }}
+  when: rocm_smi_power_indices is defined
 
 - name: Display AMD GPU detection results
   ansible.builtin.debug:
     msg: >-
-      AMD GPU: {{ power_monitoring_has_amd_gpu | default(false) }}
-      (indices={{ power_monitoring_amd_gpu_indices | default([]) }})
+      AMD GPU power: {{ power_monitoring_has_amd_gpu | default(false) }}
+      (indices with power={{ power_monitoring_amd_gpu_indices | default([]) }})

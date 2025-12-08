@@ -1,42 +1,80 @@
 #!/usr/bin/env bash
 
-# AMD GPU Power Monitoring Script
-# This script reads instantaneous GPU power from AMD GPUs
-# It outputs exactly one numeric value in watts on success
+# read_gpu_amd_power.sh - per-GPU AMD power reader via rocm-smi
+#
+# Usage:
+#   read_gpu_amd_power.sh <gpu_index>
+#
+# Contract:
+#   - On success:
+#       * prints exactly one numeric value (watts) with up to 3 decimals
+#       * exits with code 0
+#   - On failure:
+#       * prints nothing
+#       * exits with non-zero code
 
-# Check if rocm-smi is available
-if command -v rocm-smi >/dev/null 2>&1; then
-    # Try to get power using rocm-smi
-    POWER_OUTPUT=$(rocm-smi --showpower --json 2>/dev/null | grep -o '"power": [0-9]*' | cut -d' ' -f2 2>/dev/null)
-    
-    if [ -n "$POWER_OUTPUT" ]; then
-        # rocm-smi outputs in watts, so we can directly echo it
-        echo "$POWER_OUTPUT"
-        exit 0
-    fi
+set -euo pipefail
+export LC_NUMERIC=C
+
+# rocm-smi must exist
+if ! command -v rocm-smi >/dev/null 2>&1; then
+  exit 1
 fi
 
-# Fallback: Check sysfs for hwmon interfaces
-# Look for power input files in hwmon directories
-for hwmon_dir in /sys/class/drm/card*/device/hwmon/hwmon*/; do
-    if [ -f "$hwmon_dir/power1_input" ]; then
-        POWER_VALUE=$(cat "$hwmon_dir/power1_input" 2>/dev/null)
-        if [ -n "$POWER_VALUE" ] && [ "$POWER_VALUE" != "0" ]; then
-            # Check if value is in microwatts (common for hwmon)
-            # If value is > 1000000, assume it's in microwatts and convert to watts
-            if [ "$POWER_VALUE" -gt 1000000 ]; then
-                # Convert from microwatts to watts
-                watts=$((POWER_VALUE / 1000000))
-            else
-                # Assume already in watts
-                watts="$POWER_VALUE"
-            fi
-            
-            echo "$watts"
-            exit 0
-        fi
-    fi
-done
+# --- Argument handling --------------------------------------------------------
 
-# If no AMD GPU power found, exit with error
-exit 1
+if [ "$#" -ne 1 ]; then
+  exit 1
+fi
+
+gpu_index="$1"
+
+case "$gpu_index" in
+  ''|*[!0-9]*)
+    exit 1
+    ;;
+esac
+
+# --- Parse rocm-smi table -----------------------------------------------------
+# We rely on the concise table output, e.g.:
+# GPU  Temp (DieEdge)  AvgPwr  SCLK  MCLK ...
+# 0    37.0c           75.0W   ...
+# or
+# 0    37.0c           N/A     ...
+#
+# Column 1: GPU index
+# Column 3: AvgPwr (e.g. "75.0W" or "N/A")
+
+power=$(
+  rocm-smi 2>/dev/null | awk -v idx="$gpu_index" '
+    $1 == idx {
+      pwr = $3
+      gsub(/W$/, "", pwr)
+
+      # Ignore unsupported / N/A values
+      if (pwr == "N/A") {
+        next
+      }
+
+      if (pwr ~ /^[0-9.]+$/) {
+        printf "%.3f\n", pwr
+        exit 0
+      }
+    }
+    END { exit 1 }
+  ' 2>/dev/null || true
+)
+
+# If we could not extract a clean numeric power value -> treat as unsupported
+if [ -z "${power:-}" ]; then
+  exit 1
+fi
+
+case "$power" in
+  ''|*[^0-9.]*)
+    exit 1
+    ;;
+esac
+
+printf '%s\n' "$power"
+exit 0

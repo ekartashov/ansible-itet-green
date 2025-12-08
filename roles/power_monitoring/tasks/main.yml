@@ -10,9 +10,14 @@
   include_tasks: detect_ram_rapl.yml
   when: power_monitoring_enable_ram | default('auto') != 'false'
 
-# GPU detection
-- name: Include GPU detection tasks
-  include_tasks: detect_gpu.yml
+# NVIDIA GPU detection
+- name: Include NVIDIA GPU detection tasks
+  include_tasks: detect_gpu_nvidia.yml
+  when: power_monitoring_enable_gpu | default('auto') != 'false'
+
+# AMD GPU detection
+- name: Include AMD GPU detection tasks
+  include_tasks: detect_gpu_amd.yml
   when: power_monitoring_enable_gpu | default('auto') != 'false'
 
 # Redfish detection

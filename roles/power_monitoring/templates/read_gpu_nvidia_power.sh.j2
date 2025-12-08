@@ -1,22 +1,74 @@
 #!/usr/bin/env bash
 
-# NVIDIA GPU Power Monitoring Script
-# This script reads instantaneous GPU power from NVIDIA GPUs
-# It outputs exactly one numeric value in watts on success
+# read_gpu_nvidia_power.sh - per-GPU NVIDIA power reader
+#
+# Usage:
+#   read_gpu_nvidia_power.sh <gpu_index>
+#
+# Contract:
+#   - On success:
+#       * prints exactly one numeric value (watts) with 3 decimals
+#       * exits with code 0
+#   - On failure:
+#       * prints nothing
+#       * exits with non-zero code
 
-# Check if nvidia-smi is available
+set -euo pipefail
+export LC_NUMERIC=C
+
+# --- Dependencies -------------------------------------------------------------
+
 if ! command -v nvidia-smi >/dev/null 2>&1; then
-    exit 1
+  exit 1
 fi
 
-# Get GPU power draw using nvidia-smi
-POWER_OUTPUT=$(nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits 2>/dev/null)
+# --- Argument handling --------------------------------------------------------
 
-# Check if we got a valid output
-if [ -z "$POWER_OUTPUT" ] || [ "$POWER_OUTPUT" = "0" ]; then
-    exit 1
+if [ "$#" -ne 1 ]; then
+  exit 1
 fi
 
-# Output the power value (it should already be in watts)
-echo "$POWER_OUTPUT"
+gpu_index="$1"
+
+case "$gpu_index" in
+  ''|*[!0-9]*)
+    exit 1
+    ;;
+esac
+
+# --- Query nvidia-smi ---------------------------------------------------------
+
+raw_power=$(
+  nvidia-smi -i "$gpu_index" \
+    --query-gpu=power.draw \
+    --format=csv,noheader,nounits 2>/dev/null | head -n1 || true
+)
+
+# nvidia-smi might output "N/A" or be empty
+if [ -z "$raw_power" ]; then
+  exit 1
+fi
+
+case "$raw_power" in
+  ''|*[^0-9.]*)
+    # not a plain numeric value
+    exit 1
+    ;;
+esac
+
+power=$(
+  printf '%s\n' "$raw_power" | awk 'NR==1 {printf "%.3f\n", $1}' 2>/dev/null
+) || exit 1
+
+if [ -z "$power" ]; then
+  exit 1
+fi
+
+case "$power" in
+  ''|*[^0-9.]*)
+    exit 1
+    ;;
+esac
+
+printf '%s\n' "$power"
 exit 0

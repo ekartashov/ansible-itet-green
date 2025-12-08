@@ -24,8 +24,15 @@ UserParameter=power.ram.package{{ loop.index0 }},/usr/local/share/zabbix_power_m
 
 # GPU power in watts, by index (NVIDIA or AMD)
 {% if power_monitoring_enable_gpu == "true" or power_monitoring_enable_gpu == "auto" %}
+{% if power_monitoring_has_nvidia_gpu | default(false) %}
+# NVIDIA GPUs: indexed via nvidia-smi, read by per-GPU script
 UserParameter=power.gpu[*],/usr/local/share/zabbix_power_monitoring/read_gpu_nvidia_power.sh "$1"
+{% elif power_monitoring_has_amd_gpu | default(false) %}
+# AMD GPUs: TODO - per-GPU indexing; currently use AMD script
+UserParameter=power.gpu[*],/usr/local/share/zabbix_power_monitoring/read_gpu_amd_power.sh "$1"
 {% endif %}
+{% endif %}
+
 
 # Platform power via Redfish/IPMI (if supported)
 {% if power_monitoring_enable_redfish == "true" or power_monitoring_enable_redfish == "auto" %}

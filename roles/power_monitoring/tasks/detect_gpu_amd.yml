@@ -1,0 +1,36 @@
+---
+# Task file for detecting AMD GPU capabilities
+
+- name: Detect AMD GPUs via rocm-smi (if available)
+  ansible.builtin.shell:
+    cmd: |
+      set -eu
+
+      if ! command -v rocm-smi >/dev/null 2>&1; then
+        exit 1
+      fi
+
+      # List GPU ids; one per line.
+      rocm-smi --showid --json 2>/dev/null \
+        | grep -o '"gpu_id"[[:space:]]*:[[:space:]]*[0-9]\+' \
+        | sed 's/.*://; s/ //g'
+  args:
+    executable: /bin/bash
+  register: rocm_smi_ids
+  changed_when: false
+  failed_when: false
+
+- name: Set facts for AMD GPU availability
+  ansible.builtin.set_fact:
+    power_monitoring_has_amd_gpu: >-
+      {{ rocm_smi_ids.rc == 0
+         and (rocm_smi_ids.stdout_lines | default([]) | length) > 0 }}
+    power_monitoring_amd_gpu_indices: >-
+      {{ rocm_smi_ids.stdout_lines | default([]) | map('trim') | list }}
+  when: rocm_smi_ids is defined
+
+- name: Display AMD GPU detection results
+  ansible.builtin.debug:
+    msg: >-
+      AMD GPU: {{ power_monitoring_has_amd_gpu | default(false) }}
+      (indices={{ power_monitoring_amd_gpu_indices | default([]) }})

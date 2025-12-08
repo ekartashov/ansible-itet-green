@@ -193,7 +193,5 @@ Admins should configure:
 
 ## Security Considerations
 
-- Scripts are deployed with minimal privileges
-- No sudo/root escalation required
-- Uses secure temporary file handling
+- sudo/root escalation required
 - All components are designed to fail gracefully rather than crash

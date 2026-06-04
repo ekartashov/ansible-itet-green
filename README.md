@@ -2,6 +2,8 @@
 
 A host-side, Ansible-driven power monitoring framework that integrates with Zabbix via UserParameters. Designed for heterogeneous, university-style hardware with minimal dependencies and conservative system changes.
 
+For more details, please read the [**Paper**](./Make_ITET_Green_Paper.pdf) and the [**Presentation**](./Make_ITET_Green_Presentation.pdf) of the project.
+
 ## Project Overview
 
 This project implements a minimal-dependency, host-local power monitoring framework that:
